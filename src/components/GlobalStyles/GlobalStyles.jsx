@@ -4,6 +4,7 @@ const GlobalStyles = createGlobalStyle`
     html {
     line-height: 1.15; 
     -webkit-text-size-adjust: 100%; 
+    font-size: 62.5% !important;
     }
     body {
     margin: 0;
