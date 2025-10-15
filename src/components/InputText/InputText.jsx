@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-const search = new URL('../../assets/public/icones/search.png', import.meta.url).href;
+const search = '/icons/search.png';
 
 
 const StyledContainer = styled.div`
@@ -8,6 +8,7 @@ const StyledContainer = styled.div`
 `;
 
 const StyledInput = styled.input`
+    margin-top: 0.4rem;
     padding: 1.2rem 1.6rem;
     width: 60.2rem;
     height: 5.7rem;
