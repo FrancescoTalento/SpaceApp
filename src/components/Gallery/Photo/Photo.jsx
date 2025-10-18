@@ -68,7 +68,7 @@ const ImgFigure = styled.img`
     width: 100%;
 `
 
-export default function Photo({photo, onZoomSolicited, expanded=false}){
+export default function Photo({photo, onZoomSolicited, expanded=false,onToggleFavorito}){
     return(
         <PhotoFigure $expanded={expanded}>
             <ImgFigure $expanded={expanded} src={photo.path}/>
@@ -79,7 +79,11 @@ export default function Photo({photo, onZoomSolicited, expanded=false}){
                 </div>
                 <footer>
                     <ButtonContainer>
-                        <IconButton><img src="/icons/favorito.png"/></IconButton>
+                        <IconButton onClick={() => onToggleFavorito(photo.id)}>
+                            {photo.favorito 
+                            ? <img src="/icons/favorito-ativo.png"/>
+                            :<img src="/icons/favorito.png"/>}
+                            </IconButton>
                         {!expanded ?<IconButton onClick={() => onZoomSolicited(photo)}><img src="/icons/expandir.png"/></IconButton> : ''}
                     </ButtonContainer>
                 </footer>

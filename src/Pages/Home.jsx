@@ -7,7 +7,7 @@ import styled from "styled-components";
 import Gallery from "../components/Gallery/Gallery";
 import fotos from './fotos.json';
 import ModalFoto from "../components/ModalFoto/ModalFoto";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 
 const AppContainer = styled.div`
@@ -32,9 +32,38 @@ const GalleryContent = styled.div`
 
 const HomePage = () =>
   {
-  //const [foto, setFotos] = useState(fotos)
+  const [fotoGalery, setFotosGalery] = useState(fotos)
   
-  const [selectedPhoto, setSelectedPhoto] = useState(null)
+  const [selectedId, setSelectedId] = useState(null);
+  
+  const selectedPhoto = useMemo(
+    () => fotoGalery.find(p => p.id === selectedId) ?? null,
+    [fotoGalery, selectedId]
+  );
+   const toggleFavoritoById = (id) => {
+    setFotosGalery(prev =>
+      prev.map(p => p.id === id ? { ...p, favorito: !p.favorito } : p)
+    );
+    // não precisa tocar em selectedPhoto: ele se atualiza porque é derivado de fotoGalery
+  };
+  // const ToggleFavorito = (toggledPhoto) =>
+  // {
+  //   console.log("oi");
+  //   console.log(toggledPhoto);
+  //     setFotosGalery(fotoGalery.map(value => {
+        
+  //       const photoChanged = {
+  //         ...value,
+  //         favorito: toggledPhoto.id === value.id ? !value.favorito : value.favorito 
+  //       }
+  //       if(selectedPhoto && selectedPhoto.id == toggledPhoto.id)
+  //         {
+  //           setSelectedPhoto({...toggledPhoto, favorito: toggledPhoto.favorito})
+  //         }
+  //       return photoChanged
+        
+  //     }))
+  // }
 
   
   return(
@@ -47,12 +76,19 @@ const HomePage = () =>
           <GalleryContent>
             <Banner/>
             <Gallery 
-              photos={fotos} 
-              onSelectedPhoto={setSelectedPhoto}/>
+              photos={fotoGalery} 
+              onSelectedPhoto={(photo)=> setSelectedId(photo.id)}
+              onToggleFavorito={toggleFavoritoById}
+            />
+             
           </GalleryContent>
         </MainContainer>
       </AppContainer>
-      <ModalFoto photo={selectedPhoto} onClose={()=> setSelectedPhoto(null)}/>
+      <ModalFoto 
+        photo={selectedPhoto} 
+        onClose={()=> setSelectedId(null)}
+        onToggleFavorito={() => selectedPhoto && toggleFavoritoById(selectedPhoto.id)}
+        />
     </FundoGradinet>
     );
 }

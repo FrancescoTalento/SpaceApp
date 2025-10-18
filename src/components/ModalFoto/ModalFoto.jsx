@@ -45,7 +45,7 @@ const Overlay = styled.div`
   background-color: rgb(0,0,0,0.7);
 `
 
-export default function ModalFoto({ photo, onClose}) {
+export default function ModalFoto({ photo, onClose,onToggleFavorito}) {
   
   return (
     <>
@@ -53,7 +53,7 @@ export default function ModalFoto({ photo, onClose}) {
         <>
           <Overlay />
           <StyledDialog open={!!photo}>
-            <Photo expanded={true} photo={photo} />
+            <Photo expanded={true} photo={photo} onToggleFavorito={onToggleFavorito}/>
             <BtnFecha onClick={onClose}/>
           </StyledDialog>
         </>

@@ -23,7 +23,7 @@ const FluidSection = styled.section`
     }
 `
 
-export default function Gallery({photos=[],onSelectedPhoto})
+export default function Gallery({photos=[],onSelectedPhoto,onToggleFavorito})
 {
     return(
         <GalleryContainer>
@@ -36,6 +36,7 @@ export default function Gallery({photos=[],onSelectedPhoto})
                             onZoomSolicited={onSelectedPhoto}
                             photo={photo}
                             key={photo.id}
+                            onToggleFavorito={onToggleFavorito}
                         />
                     ))}
                 </FluidSection>
