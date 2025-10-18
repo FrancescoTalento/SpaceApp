@@ -9,7 +9,7 @@ const StyledFigure = styled.figure`
     min-height: 32.8rem;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: ${props => `url(${props.backgroundImage})`};
+    background-image: ${props => `url(${props.$backgroundImage})`};
     border-radius: 2rem;
     margin:0px;
 `
@@ -26,7 +26,7 @@ const StyledTittle  = styled.h2`
 export default function Banner() 
 {
     return(
-        <StyledFigure backgroundImage={bannerUrl}>
+        <StyledFigure $backgroundImage={bannerUrl}>
             <StyledTittle>A galeria mais completa de fotos do espaço!</StyledTittle>
         </StyledFigure>
     )    

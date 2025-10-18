@@ -5,7 +5,9 @@ import SideBar from "../components/SideBar/SideBar";
 import Banner from "../components/Banner/Banner";
 import styled from "styled-components";
 import Gallery from "../components/Gallery/Gallery";
-
+import fotos from './fotos.json';
+import ModalFoto from "../components/ModalFoto/ModalFoto";
+import { useState } from "react";
 
 
 const AppContainer = styled.div`
@@ -23,12 +25,19 @@ const GalleryContent = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  gap: 5.6rem;
 `
 
 
+
 const HomePage = () =>
-{
-    return(
+  {
+  //const [foto, setFotos] = useState(fotos)
+  
+  const [selectedPhoto, setSelectedPhoto] = useState(null)
+
+  
+  return(
     <FundoGradinet>
       <GlobalStyles/>
       <AppContainer>
@@ -37,10 +46,13 @@ const HomePage = () =>
           <SideBar/>
           <GalleryContent>
             <Banner/>
-            <Gallery/>
+            <Gallery 
+              photos={fotos} 
+              onSelectedPhoto={setSelectedPhoto}/>
           </GalleryContent>
         </MainContainer>
       </AppContainer>
+      <ModalFoto photo={selectedPhoto} onClose={()=> setSelectedPhoto(null)}/>
     </FundoGradinet>
     );
 }

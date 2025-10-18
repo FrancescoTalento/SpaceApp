@@ -10,8 +10,8 @@ const StyledListItem = styled.li`
 	display: flex;
     align-items: center;
     gap: 22px;
-    font-family: ${props => props.Ativo ? 'GandhiSansBold' : 'GandhiSansRegular'};
-    color: ${props => props.Ativo ? '#7B78E5' : '#D9D9D9'};
+    font-family: ${props => props.$Ativo ? 'GandhiSansBold' : 'GandhiSansRegular'};
+    color: ${props => props.$Ativo ? '#7B78E5' : '#D9D9D9'};
 `
 
 export default function NavigationItem(
@@ -25,7 +25,7 @@ export default function NavigationItem(
             <NavLink to={to} style={{textDecoration:'none'}}>
                 {({isActive}) => 
                 (
-                    <StyledListItem Ativo={isActive}>
+                    <StyledListItem $Ativo={isActive}>
                         <img
                             src={isActive ? imgActive : imgInactive}
                         />
