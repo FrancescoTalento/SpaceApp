@@ -22,6 +22,7 @@ const StyledInput = styled.input`
     font-weight: 400;
     font-size: 2rem;
     line-height: 2rem;
+    color: white;
 
 `
 
@@ -34,10 +35,10 @@ const SearchICon = styled.img`
     cursor: pointer;
 `
 
-export default function InputText(){
+export default function InputText({onTypedSearch}){
     return(
         <StyledContainer>
-            <StyledInput placeholder='O que você procura?'>
+            <StyledInput  onInput={(event) => onTypedSearch(event.target.value)} placeholder='O que você procura?'>
             </StyledInput>
                 <SearchICon src={search} alt='search icon'/>
         </StyledContainer>

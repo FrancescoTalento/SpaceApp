@@ -23,11 +23,11 @@ const FluidSection = styled.section`
     }
 `
 
-export default function Gallery({photos=[],onSelectedPhoto,onToggleFavorito})
+export default function Gallery({photos=[],onSelectedPhoto,onToggleFavorito, onSelectedTag})
 {
     return(
         <GalleryContainer>
-            <Tags/>
+            <Tags onSelectedTag={onSelectedTag}/>
             <GalleryContent>
                 <FluidSection>
                     <Titulo>Navegue pela galeria</Titulo>

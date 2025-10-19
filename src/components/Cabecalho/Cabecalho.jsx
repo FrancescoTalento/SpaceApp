@@ -15,11 +15,11 @@ const StyledHeader = styled.header`
     }
 `
 
-export default function Cabecalho(){
+export default function Cabecalho({onTypedSearch}){
     return(
         <StyledHeader>
             <img src={logo} alt="logo" />
-            <InputText/>
+            <InputText onTypedSearch={onTypedSearch}/>
         </StyledHeader>
     )
 }
