@@ -10,6 +10,7 @@ const GalleryContainer = styled.div`
     gap: 3.9rem;
 `
 const GalleryContent = styled.div`
+    gap: 2.4rem;
     display: flex;
 `
 const FluidSection = styled.section`

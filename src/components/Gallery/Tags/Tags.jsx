@@ -60,6 +60,8 @@ export default function Tags({onSelectedTag}){
         
         onSelectedTag(tagSelecionada.id)
     }
+    
+    
     return(
         <ContainerTag>
             <TagTitle>Busque por Tags</TagTitle>
